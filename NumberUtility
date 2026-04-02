@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("=== Smart Calculator & Number Utility System ===");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.println("5. Even or Odd check");
+        System.out.println("6. Largest of two numbers");
+        System.out.println("7. Largest of three numbers");
+        System.out.println("8. Positive, Negative or Zero check");
+        System.out.print("Choose an option (1-8): ");
+
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                add(sc);
+                break;
+            case 2:
+                subtract(sc);
+                break;
+            case 3:
+                multiply(sc);
+                break;
+            case 4:
+                divide(sc);
+                break;
+            case 5:
+                evenOdd(sc);
+                break;
+            case 6:
+                largestTwo(sc);
+                break;
+            case 7:
+                largestThree(sc);
+                break;
+            case 8:
+                checkNumber(sc);
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        sc.close();
+    }
+
+    static void add(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+        System.out.println("Result = " + (a + b));
+    }
+
+    static void subtract(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+        System.out.println("Result = " + (a - b));
+    }
+
+    static void multiply(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+        System.out.println("Result = " + (a * b));
+    }
+
+    static void divide(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+
+        if (b != 0)
+            System.out.println("Result = " + (a / b));
+        else
+            System.out.println("Error: Division by zero!");
+    }
+
+    static void evenOdd(Scanner sc) {
+        double n = getNumber(sc, "Enter a number: ");
+
+        if (n % 2 == 0)
+            System.out.println("Even");
+        else
+            System.out.println("Odd or Decimal");
+    }
+
+    static void largestTwo(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+        System.out.println("Largest = " + Math.max(a, b));
+    }
+
+    static void largestThree(Scanner sc) {
+        double a = getNumber(sc, "Enter first number: ");
+        double b = getNumber(sc, "Enter second number: ");
+        double c = getNumber(sc, "Enter third number: ");
+
+        double max = Math.max(a, Math.max(b, c));
+        System.out.println("Largest = " + max);
+    }
+
+    static void checkNumber(Scanner sc) {
+        double n = getNumber(sc, "Enter a number: ");
+
+        if (n > 0)
+            System.out.println("Positive");
+        else if (n < 0)
+            System.out.println("Negative");
+        else
+            System.out.println("Zero");
+    }
+    
+    static double getNumber(Scanner sc, String message) {
+        System.out.print(message);
+        return sc.nextDouble();
+    }
